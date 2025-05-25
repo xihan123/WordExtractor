@@ -1,5 +1,10 @@
 # WordExtractor
 
+![版本](https://img.shields.io/github/v/release/xihan123/WordExtractor)
+![语言](https://img.shields.io/badge/语言-Python-brightgreen.svg)
+![许可证](https://img.shields.io/badge/许可证-MIT-orange.svg)
+![下载量](https://img.shields.io/github/downloads/xihan123/WordExtractor/total)
+
 WordExtractor 是一个用于从 Word 文档 (`.docx`) 中批量提取数据并将其导出到 Excel 文件的工具。它通过用户定义的提取规则来定位和提取所需信息。
 
 ## 目录
@@ -243,3 +248,14 @@ WordExtractor 是一个用于从 Word 文档 (`.docx`) 中批量提取数据并�
     ```
 
     可执行文件将生成在 `dist` 目录下。
+
+## 项目状态
+
+![GitHub stars](https://img.shields.io/github/stars/xihan123/WordExtractor?style=social)
+![GitHub forks](https://img.shields.io/github/forks/xihan123/WordExtractor?style=social)
+![GitHub issues](https://img.shields.io/github/issues/xihan123/WordExtractor)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/xihan123/WordExtractor)
+
+---
+
+如果您觉得这个工具有用，请考虑给项目点个 ⭐️！
