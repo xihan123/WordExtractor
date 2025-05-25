@@ -1,0 +1,47 @@
+name: build.yml
+
+on:
+  push:
+    tags:
+      - 'v*' # 当匹配 'v*.*.*' 格式的标签被推送时触发
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  build-and-release:
+    name: Build and Release
+    runs-on: windows-latest # 使用 Windows 环境
+
+    permissions:
+      contents: write # 需要写入权限来创建 Release 和上传构建产物
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Build with PyInstaller
+        run: |
+          pyinstaller --noconfirm --onefile --windowed --clean --uac-admin --icon=resources/app_icon.ico --name "WordExtractor" --add-data "resources;resources" main.py
+
+      - name: Archive artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: WordExtractor
+          path: dist/WordExtractor.exe
+
+      - name: Create Release and Upload Assets
+        if: startsWith(github.ref, 'refs/tags/') # 仅当事件是标签推送时执行
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.exe

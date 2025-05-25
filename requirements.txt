@@ -1,0 +1,7 @@
+PyQt6
+PyQt6-Qt6
+PyQt6-sip
+python-docx
+openpyxl
+qasync
+pywin32>=310; platform_system == "Windows"
